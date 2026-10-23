@@ -21,4 +21,9 @@ export const envs = {
     .get('MAINTENANCE_EMAIL')
     .required()
     .asString(),
+
+  awsRegion: env.get('AWS_REGION').required().asString(),
+  awsAccessKeyId: env.get('AWS_ACCESS_KEY_ID').required().asString(),
+  awsSecretAccessKey: env.get('AWS_SECRET_ACCESS_KEY').required().asString(),
+  awsBucketName: env.get('AWS_BUCKET_NAME').required().asString(),
 };

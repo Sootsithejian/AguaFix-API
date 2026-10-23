@@ -1,22 +1,9 @@
-import {
-  Injectable,
-} from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
 
-import {
-  InjectRepository,
-} from '@nestjs/typeorm';
-
-import {
-  Repository,
-} from 'typeorm';
-
-import {
-  Report,
-} from './entities/report.entity';
-
-import {
-  CreateReportDto,
-} from './dto/create-report.dto';
+import { Report } from './entities/report.entity';
+import { CreateReportDto } from './dto/create-report.dto';
 
 @Injectable()
 export class ReportsService {
@@ -27,9 +14,12 @@ export class ReportsService {
 
   async create(
     createReportDto: CreateReportDto,
+    photoUrl: string,
   ): Promise<Report> {
-    const report =
-      this.reportRepository.create(createReportDto);
+    const report = this.reportRepository.create({
+      ...createReportDto,
+      photoUrl,
+    });
 
     return this.reportRepository.save(report);
   }

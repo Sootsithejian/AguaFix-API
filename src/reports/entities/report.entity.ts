@@ -27,6 +27,15 @@ export class Report {
   })
   isResolved: boolean;
 
+  @Column()
+  photoUrl: string;
+
+  @Column({
+    type: 'varchar',
+    nullable: true,
+  })
+  repairPhotoUrl: string | null;
+
   @CreateDateColumn({
     type: 'timestamp',
   })
